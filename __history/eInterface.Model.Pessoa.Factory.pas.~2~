@@ -1,0 +1,61 @@
+unit eInterface.Model.Pessoa.Factory;
+
+interface
+
+uses
+  eInterface.Model.Interfaces;
+
+type
+
+  TModelPessoaFactory = class(TInterfacedObject, iPessoa)
+  private
+    FNome : String;
+    FSobrenome : String;
+    function Nome (Value : String) : iPessoa;
+    function SobreNome (Value : String) : iPessoa;
+    function NomeCompleto : String;
+  public
+    constructor Create;
+    destructor Destroy; override;
+    class function New : iPessoa;
+  end;
+
+implementation
+
+{ TModelPessoa }
+
+constructor TModelPessoaFactory.Create;
+begin
+
+end;
+
+destructor TModelPessoaFactory.Destroy;
+begin
+
+  inherited;
+end;
+
+class function TModelPessoaFactory.New: iPessoa;
+begin
+  Result := Self.Create;
+end;
+
+function TModelPessoaFactory.Nome(Value: String): iPessoa;
+begin
+  Result := Self;
+  FNome := Value;
+end;
+
+function TModelPessoaFactory.NomeCompleto: String;
+begin
+  Result := FNome + ' ' + FSobreNome + 'LTDA ME';
+end;
+
+function TModelPessoaFactory.SobreNome(Value: String): iPessoa;
+begin
+  Result := Self;
+  FSobreNome := Value;
+end;
+
+end.
+

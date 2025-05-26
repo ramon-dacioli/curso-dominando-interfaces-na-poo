@@ -28,7 +28,7 @@ var
 implementation
 
 uses
-  eInterface.Model.PessoaFisica, eInterface.Model.PessoaJuridica;
+  eInterface.Model.Pessoa.Factory;
 
 {$R *.dfm}
 
@@ -44,7 +44,7 @@ end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-  FPessoa := TModelPessoaJuridica.New;
+  FPessoa := TModelPessoaFactory.New.PessoaFisica;
 end;
 
 end.
