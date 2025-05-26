@@ -17,6 +17,7 @@ type
   public
     constructor Create;
     destructor Destroy; override;
+    class function New : iPessoa;
   end;
 
 implementation
@@ -32,6 +33,11 @@ destructor TModelPessoa.Destroy;
 begin
 
   inherited;
+end;
+
+class function TModelPessoa.New: iPessoa;
+begin
+  Result := Self.Create;
 end;
 
 function TModelPessoa.Nome(Value: String): iPessoa;
