@@ -13,8 +13,9 @@ type
     Edit1: TEdit;
     Edit2: TEdit;
     Memo1: TMemo;
+    ComboBox1: TComboBox;
     procedure Button1Click(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
+    procedure ComboBox1Change(Sender: TObject);
   private
     { Private declarations }
     FPessoa : iPessoa;
@@ -28,7 +29,7 @@ var
 implementation
 
 uses
-  eInterface.Model.Pessoa.Factory;
+  eInterface.Controller.Pessoa, eInterface.Controller.Interfaces;
 
 {$R *.dfm}
 
@@ -42,9 +43,12 @@ begin
   );
 end;
 
-procedure TForm1.FormCreate(Sender: TObject);
+procedure TForm1.ComboBox1Change(Sender: TObject);
 begin
-  FPessoa := TModelPessoaFactory.New.PessoaFisica;
+  case ComboBox1.ItemIndex of
+    0 : FPessoa := TControllerPessoa.New.Pessoa(tpFisica);
+    1 : FPessoa := TControllerPessoa.New.Pessoa(tpJuridica);
+  end;
 end;
 
 end.
