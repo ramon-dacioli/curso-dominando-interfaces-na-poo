@@ -1,0 +1,30 @@
+unit eInterface.Model.Interfaces;
+
+interface
+
+type
+
+  TEvDisplay = procedure (Value : String) of Object;
+
+  iPessoa = interface
+
+    ['{1EB407E6-F417-4BD5-AF52-C296B34C2276}']
+
+    function Nome (Value : String) : iPessoa;
+    function SobreNome (Value : String) : iPessoa;
+    function NomeCompleto : iPessoa;
+    function Display (Value : TEvDisplay) : iPessoa;
+
+  end;
+
+  iPessoaFactory = interface
+
+    ['{7FB4B912-4318-42E4-A9A6-E24658783461}']
+
+    function PessoaFisica : iPessoa;
+    function PessoaJuridica : iPessoa;
+  end;
+
+implementation
+
+end.

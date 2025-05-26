@@ -10,10 +10,16 @@ type
 
     ['{1EB407E6-F417-4BD5-AF52-C296B34C2276}']
 
-    function Nome (Value : String) : iPessoa;
+    function Nome (Value : String) : iPessoa; overload; //Set
+    function Nome : String; overload; //Get
     function SobreNome (Value : String) : iPessoa;
     function NomeCompleto : iPessoa;
     function Display (Value : TEvDisplay) : iPessoa;
+
+    //Exemplo de utilização de propertys
+    //procedure SetCPF(const Value: String);
+    //function GetFCPF: String;
+    //property CPF : String read GetFCPF write SetCPF;
 
   end;
 
