@@ -11,9 +11,11 @@ type
   private
     FNome : String;
     FSobrenome : String;
+    FDisplay : TEvDisplay;
     function Nome (Value : String) : iPessoa;
     function SobreNome (Value : String) : iPessoa;
     function NomeCompleto : String;
+    function Display (Value : TEvDisplay) : iPessoa;
   public
     constructor Create;
     destructor Destroy; override;
@@ -33,6 +35,12 @@ destructor TModelPessoaFisica.Destroy;
 begin
 
   inherited;
+end;
+
+function TModelPessoaFisica.Display(Value: TEvDisplay): iPessoa;
+begin
+  Result := Self;
+  FDisplay := Value;
 end;
 
 class function TModelPessoaFisica.New: iPessoa;

@@ -11,9 +11,11 @@ type
   private
     FNome : String;
     FSobrenome : String;
+    FDisplay : TEvDisplay;
     function Nome (Value : String) : iPessoa;
     function SobreNome (Value : String) : iPessoa;
-    function NomeCompleto : String;
+    function NomeCompleto : iPessoa;
+    function Display (Value : TEvDisplay) : iPessoa;
   public
     constructor Create;
     destructor Destroy; override;
@@ -35,6 +37,12 @@ begin
   inherited;
 end;
 
+function TModelPessoaJuridica.Display(Value: TEvDisplay): iPessoa;
+begin
+  Result := Self;
+  FDisplay := Value;
+end;
+
 class function TModelPessoaJuridica.New: iPessoa;
 begin
   Result := Self.Create;
@@ -46,9 +54,10 @@ begin
   FNome := Value;
 end;
 
-function TModelPessoaJuridica.NomeCompleto: String;
+function TModelPessoaJuridica.NomeCompleto: iPessoa;
 begin
-  Result := FNome + ' ' + FSobreNome + 'LTDA ME';
+  Result := Self;
+  FDisplay(FNome + ' ' + FSobreNome + ' LTDA ME');
 end;
 
 function TModelPessoaJuridica.SobreNome(Value: String): iPessoa;

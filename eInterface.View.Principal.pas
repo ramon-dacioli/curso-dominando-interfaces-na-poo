@@ -16,9 +16,11 @@ type
     ComboBox1: TComboBox;
     procedure Button1Click(Sender: TObject);
     procedure ComboBox1Change(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
     FPessoa : iPessoa;
+    procedure ExibeResultado(Value : String);
   public
     { Public declarations }
   end;
@@ -35,12 +37,11 @@ uses
 
 procedure TForm1.Button1Click(Sender: TObject);
 begin
-  Memo1.Lines.Add(
   FPessoa
     .Nome(Edit1.Text)
     .SobreNome(Edit2.Text)
+    .Display(ExibeResultado)
     .NomeCompleto
-  );
 end;
 
 procedure TForm1.ComboBox1Change(Sender: TObject);
@@ -49,6 +50,16 @@ begin
     0 : FPessoa := TControllerPessoa.New.Pessoa(tpFisica);
     1 : FPessoa := TControllerPessoa.New.Pessoa(tpJuridica);
   end;
+end;
+
+procedure TForm1.ExibeResultado(Value: String);
+begin
+  Memo1.Lines.Add(Value);
+end;
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  ReportMemoryLeaksOnShutdown := True;
 end;
 
 end.
